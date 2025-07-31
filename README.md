@@ -5,7 +5,7 @@ stores them in **Google Cloud Storage (GCS)**, and then loads them into **Google
 
 ---
 
-## Project Structure
+## Project Structure  
 
 ├── README.md
 ├── config
@@ -56,6 +56,6 @@ jafgen 2
 ```
 
 ## Configuration
-All project settings (e.g., GCP bucket name, BigQuery dataset) are defined in:
+All project settings (e.g., GCP bucket name, BigQuery dataset) are defined in:  
 config/config.yaml
 
