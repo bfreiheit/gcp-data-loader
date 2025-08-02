@@ -1,28 +1,22 @@
-import yaml
-import importlib.resources as pkg_resources
 
 from google.cloud import bigquery, storage
 
-from data_loader.config import config
+from data_loader.config import config as cfg
 
+cfg.set_gcp_credentials()
+conf = cfg.load() 
 
-config.set_gcp_credentials()
-
-# load yaml   
-config = config.load()
-
-bucket_name = config['storage']['bucket']
-dataset_id = config['bigquery']['dataset_id']
-tables = config['tables']
-
-print(bucket_name)
-
-bq_client = bigquery.Client()
-storage_client = storage.Client()
+bucket_name = conf['storage']['bucket']
+dataset_id = conf['bigquery']['dataset_id']
+tables = conf['tables']
 
 def load_tables_from_gcs():
     for table_name, table_info in tables.items():
-        gcs_uri = f"gs://{bucket_name}/{table_info['file_path']}"
+
+        bq_client = bigquery.Client()
+        storage_client = storage.Client()
+
+        gcs_uri = f"gs://{bucket_name}/{table_info['path']}"
         print(f"load tables {table_name} from {gcs_uri}...")
 
         schema = [bigquery.SchemaField(**field) for field in table_info.get('schema', [])]
@@ -49,10 +43,5 @@ def load_tables_from_gcs():
         print(f"table {table_name} successfully loaded with {load_job.output_rows} rows.")
 
 
-'''  
 if __name__ == "__main__":
     load_tables_from_gcs()
-
-'''
-
-

@@ -1,3 +1,8 @@
+
 from data_loader.config import config
 
-print(config.set_gcp_credentials())
+def test_load_returns_expected_keys():
+    cfg = config.load()
+    assert isinstance(cfg, dict)
+    assert "storage" in cfg
+    assert "tables" in cfg

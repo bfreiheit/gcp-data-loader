@@ -11,4 +11,3 @@ def set_gcp_credentials() -> str:
     cred_path = os.path.expanduser(cfg['gcp']['credentials_path'])
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = cred_path
     return cred_path # only for depugging
-

@@ -11,7 +11,7 @@ bigquery:
 
 tables:
   raw_orders:
-    path: "jaffle-files/raw/raw_orders.csv"
+    path: "raw/raw_orders.csv"
     schema:
       - name: id
         type: STRING
@@ -37,7 +37,7 @@ tables:
     partition_field: ordered_at
 
   raw_items:
-    path: "jaffle-files/raw/raw_items.csv"
+    path: "raw/raw_items.csv"
     schema:
       - name: id
         type: STRING
@@ -50,7 +50,7 @@ tables:
         mode: REQUIRED
 
   raw_products:
-    path: "jaffle-files/raw/raw_products.csv"
+    path: "raw/raw_products.csv"
     schema:
       - name: sku
         type: STRING
@@ -69,7 +69,7 @@ tables:
         mode: NULLABLE
 
   raw_stores:
-    path: "jaffle-files/raw/raw_stores.csv"
+    path: "raw/raw_stores.csv"
     schema:
       - name: id
         type: STRING
@@ -85,7 +85,7 @@ tables:
         mode: REQUIRED
 
   raw_customers:
-    path: "jaffle-files/raw/raw_customers.csv"
+    path: "raw/raw_customers.csv"
     schema:
       - name: id
         type: STRING
@@ -95,7 +95,7 @@ tables:
         mode: REQUIRED
 
   raw_tweets:
-    path: "jaffle-files/raw/raw_tweets.csv"
+    path: "raw/raw_tweets.csv"
     schema:
       - name: id
         type: STRING
@@ -111,7 +111,7 @@ tables:
         mode: REQUIRED
 
   raw_supplies:
-    path: "jaffle-files/raw/raw_supplies.csv"
+    path: "raw/raw_supplies.csv"
     schema:
       - name: id
         type: STRING
