@@ -5,27 +5,35 @@ stores them in **Google Cloud Storage (GCS)**, and then loads them into **Google
 
 ---
 
-## Project Structure  
+## Project Structure   
 
-├── README.md
-├── config
-│   ├── config.py
-│   └── config.yaml
-├── data
-│   └── raw
-│       └── jaffle-data
-│           ├── raw_customers.csv
-│           ├── raw_items.csv
-│           ├── raw_orders.csv
-│           ├── raw_products.csv
-│           ├── raw_stores.csv
-│           ├── raw_supplies.csv
-│           └── raw_tweets.csv
-├── requirements.txt
-└── scripts
-    ├── generate_data.py
-    ├── load_bigquery.py
-    └── upload_gsc.py
+├── MANIFEST.in  
+├── README.md  
+├── data  
+│   └── raw  
+│       └── jaffle-data  
+│           ├── raw_customers.csv  
+│           ├── raw_items.csv  
+│           ├── raw_orders.csv  
+│           ├── raw_products.csv  
+│           ├── raw_stores.csv  
+│           ├── raw_supplies.csv  
+│           └── raw_tweets.csv  
+├── data_loader  
+│   ├── __init__.py  
+│   ├── config  
+│   │   ├── __init__.py  
+│   │   ├── config.py  
+│   │   └── config.yaml  
+│   ├── scripts  
+│   │   ├── __init__.py  
+│   │   ├── upload_bigquery.py  
+│   │   └── upload_gsc.py  
+│   └── tests  
+│       ├── test_config.py  
+│       └── test_upload_bigquery.py  
+├── setup.cfg  
+└── setup.py  
 
 ## Installation and Usage
 
@@ -45,7 +53,7 @@ source .venv/bin/activate
 ### 3. Install Python packages
 
 ```bash
-pip install -r requirements.txt
+pip install -e .
 ```
 
 ### 4. Switch to data folder and import jaffles files
