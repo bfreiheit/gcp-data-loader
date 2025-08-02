@@ -14,25 +14,25 @@ tables:
     path: "raw/raw_orders.csv"
     schema:
       - name: id
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: customer
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: ordered_at
-        type: DATETIME
+        field_type: DATETIME
         mode: REQUIRED
       - name: store_id
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: subtotal
-        type: INTEGER
+        field_type: INTEGER
         mode: REQUIRED
       - name: tax_paid
-        type: INTEGER
+        field_type: INTEGER
         mode: REQUIRED
       - name: order_total
-        type: INTEGER
+        field_type: INTEGER
         mode: REQUIRED
     partition_field: ordered_at
 
@@ -40,93 +40,93 @@ tables:
     path: "raw/raw_items.csv"
     schema:
       - name: id
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: order_id
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: sku
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
 
   raw_products:
     path: "raw/raw_products.csv"
     schema:
       - name: sku
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: name
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
-      - name: type
-        type: STRING
+      - name: field_type
+        field_type: STRING
         mode: NULLABLE
       - name: price
-        type: INTEGER
+        field_type: INTEGER
         mode: REQUIRED
       - name: description
-        type: STRING
+        field_type: STRING
         mode: NULLABLE
 
   raw_stores:
     path: "raw/raw_stores.csv"
     schema:
       - name: id
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: name
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: opened_at
-        type: DATETIME
+        field_type: DATETIME
         mode: REQUIRED
       - name: tax_rate
-        type: FLOAT
+        field_type: FLOAT
         mode: REQUIRED
 
   raw_customers:
     path: "raw/raw_customers.csv"
     schema:
       - name: id
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: name
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
 
   raw_tweets:
     path: "raw/raw_tweets.csv"
     schema:
       - name: id
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: user_id
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: tweeted_at
-        type: DATETIME
+        field_type: DATETIME
         mode: REQUIRED
       - name: content
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
 
   raw_supplies:
     path: "raw/raw_supplies.csv"
     schema:
       - name: id
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: name
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       - name: cost
-        type: INTEGER
+        field_type: INTEGER
         mode: REQUIRED
       - name: perishable
-        type: BOOL
+        field_type: BOOL
         mode: REQUIRED
       - name: sku
-        type: STRING
+        field_type: STRING
         mode: REQUIRED
       
 
