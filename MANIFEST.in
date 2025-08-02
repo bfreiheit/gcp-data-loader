@@ -1,0 +1,3 @@
+include README.md
+recursive-include mypackage/config *.yaml
+recursive-include mypackage/data/raw/jaffle-data *.csv

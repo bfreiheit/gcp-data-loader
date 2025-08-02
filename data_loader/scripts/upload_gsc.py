@@ -4,10 +4,10 @@ import os
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(PROJECT_ROOT)
 
-DATA_DIR = os.path.join(PROJECT_ROOT, "data", "raw", "jaffle-data")
-
 from google.cloud import storage
 import config.config
+
+DATA_DIR = os.path.join(PROJECT_ROOT, "data", "raw", "jaffle-data")
 
 client = storage.Client()
 bucket = client.bucket("jaffle-files")

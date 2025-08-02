@@ -1,0 +1,132 @@
+gcp:
+  project_id: "mystic-pact-455314-g4"
+  credentials_path: "~/.gcp/gcs-user-key.json"
+
+storage:
+  bucket: "jaffle-files"
+  raw_prefix: "raw"
+
+bigquery:
+  dataset_id: "jaffle_raw"
+
+tables:
+  raw_orders:
+    path: "jaffle-files/raw/raw_orders.csv"
+    schema:
+      - name: id
+        type: STRING
+        mode: REQUIRED
+      - name: customer
+        type: STRING
+        mode: REQUIRED
+      - name: ordered_at
+        type: DATETIME
+        mode: REQUIRED
+      - name: store_id
+        type: STRING
+        mode: REQUIRED
+      - name: subtotal
+        type: INTEGER
+        mode: REQUIRED
+      - name: tax_paid
+        type: INTEGER
+        mode: REQUIRED
+      - name: order_total
+        type: INTEGER
+        mode: REQUIRED
+    partition_field: ordered_at
+
+  raw_items:
+    path: "jaffle-files/raw/raw_items.csv"
+    schema:
+      - name: id
+        type: STRING
+        mode: REQUIRED
+      - name: order_id
+        type: STRING
+        mode: REQUIRED
+      - name: sku
+        type: STRING
+        mode: REQUIRED
+
+  raw_products:
+    path: "jaffle-files/raw/raw_products.csv"
+    schema:
+      - name: sku
+        type: STRING
+        mode: REQUIRED
+      - name: name
+        type: STRING
+        mode: REQUIRED
+      - name: type
+        type: STRING
+        mode: NULLABLE
+      - name: price
+        type: INTEGER
+        mode: REQUIRED
+      - name: description
+        type: STRING
+        mode: NULLABLE
+
+  raw_stores:
+    path: "jaffle-files/raw/raw_stores.csv"
+    schema:
+      - name: id
+        type: STRING
+        mode: REQUIRED
+      - name: name
+        type: STRING
+        mode: REQUIRED
+      - name: opened_at
+        type: DATETIME
+        mode: REQUIRED
+      - name: tax_rate
+        type: FLOAT
+        mode: REQUIRED
+
+  raw_customers:
+    path: "jaffle-files/raw/raw_customers.csv"
+    schema:
+      - name: id
+        type: STRING
+        mode: REQUIRED
+      - name: name
+        type: STRING
+        mode: REQUIRED
+
+  raw_tweets:
+    path: "jaffle-files/raw/raw_tweets.csv"
+    schema:
+      - name: id
+        type: STRING
+        mode: REQUIRED
+      - name: user_id
+        type: STRING
+        mode: REQUIRED
+      - name: tweeted_at
+        type: DATETIME
+        mode: REQUIRED
+      - name: content
+        type: STRING
+        mode: REQUIRED
+
+  raw_supplies:
+    path: "jaffle-files/raw/raw_supplies.csv"
+    schema:
+      - name: id
+        type: STRING
+        mode: REQUIRED
+      - name: name
+        type: STRING
+        mode: REQUIRED
+      - name: cost
+        type: INTEGER
+        mode: REQUIRED
+      - name: perishable
+        type: BOOL
+        mode: REQUIRED
+      - name: sku
+        type: STRING
+        mode: REQUIRED
+      
+
