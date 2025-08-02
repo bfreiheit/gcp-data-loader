@@ -1,20 +1,30 @@
-import sys
+from google.cloud import storage
 import os
 
-PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.append(PROJECT_ROOT)
+from data_loader.config import config as cfg
 
-from google.cloud import storage
-import config.config
+# --- load configurations ---
+cfg.set_gcp_credentials()
+conf = cfg.load()
 
-DATA_DIR = os.path.join(PROJECT_ROOT, "data", "raw", "jaffle-data")
+BUCKET_NAME = conf['storage']['bucket']
+DATA_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "data", "raw", "jaffle-data"
+)
 
-client = storage.Client()
-bucket = client.bucket("jaffle-files")
+def upload_files_to_gcs(data_dir, bucket_name, prefix="raw"):
+    """loads all files in the data directory to a GCS bucket"""
+    client = storage.Client()
+    bucket = client.bucket(bucket_name)
 
-for file_name in os.listdir(DATA_DIR):
-    local_path = os.path.join(DATA_DIR, file_name)
-    if os.path.isfile(local_path):  # exclude directories
-        blob = bucket.blob(f"raw/{file_name}")
-        blob.upload_from_filename(local_path)
-        print(f"uploaded: {file_name}")
+    for file_name in os.listdir(data_dir):
+        local_path = os.path.join(data_dir, file_name)
+        if os.path.isfile(local_path):  # only files
+            blob = bucket.blob(f"{prefix}/{file_name}")
+            blob.upload_from_filename(local_path)
+            print(f"Uploaded: {file_name}")
+
+
+if __name__ == "__main__":
+    upload_files_to_gcs(DATA_DIR, BUCKET_NAME)
